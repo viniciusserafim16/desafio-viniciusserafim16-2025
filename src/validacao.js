@@ -20,6 +20,7 @@ class Validacao {
         }
         return { error: null };
     }
+    
     static validarBrinquedos(brinquedosPessoa1, brinquedosPessoa2, ListaBrinquedos) {
 
         const brinquedosPessoas = [...brinquedosPessoa1, ...brinquedosPessoa2];
@@ -31,7 +32,6 @@ class Validacao {
         }
         return { error: null };
     }
-
 }
 
 export { Validacao };

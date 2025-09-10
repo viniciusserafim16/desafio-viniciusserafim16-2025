@@ -3,7 +3,6 @@ import { ListaAbrigo, ListaBrinquedos } from './constantes.js';
 import { Pessoa } from './pessoa.js';
 import { Validacao } from './validacao.js';
 
-
 class AbrigoAnimais {
   constructor() {
     this.animais = this.criarAnimais();
@@ -37,13 +36,14 @@ class AbrigoAnimais {
       }
 
       const errDuplicados = Validacao.verificarDuplicados(brinquedos1, brinquedos2);
-      if (errDuplicados && errDuplicados.error) {
+      if (errDuplicados.error) {
         return { erro: errDuplicados.error };
       }
 
-      const errBrinquedoInvalido = Validacao.validarBrinquedos(brinquedos1, brinquedos2, ListaBrinquedos);
-      if (errBrinquedoInvalido && errBrinquedoInvalido.error) {
-        return { erro: errBrinquedoInvalido.error };
+      const errBrinquedos = Validacao.validarBrinquedos(brinquedos1, brinquedos2, ListaBrinquedos);
+      console.log(errBrinquedos);
+      if (errBrinquedos.error) {
+        return { erro: errBrinquedos.error };
       }
 
       const pessoa1 = new Pessoa('1', brinquedos1);

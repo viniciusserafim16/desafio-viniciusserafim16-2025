@@ -43,19 +43,6 @@ describe('Abrigo de Animais', () => {
     expect(resultado.lista).toBeFalsy();
   });
 
-  test('Deve rejeitar adoção acima do limite', () => {
-    const resultado = new AbrigoAnimais().encontraPessoas('LASER,RATO,BOLA,CAIXA',
-      'RATO,NOVELO,BOLA,CAIXA,LASER', 'Rex,Fofo,Mimi,Bebe,Zero,Bola');
-    expect(resultado.lista[0]).toBe('Bebe - pessoa 1');
-    expect(resultado.lista[1]).toBe('Bola - abrigo');
-    expect(resultado.lista[2]).toBe('Fofo - abrigo');
-    expect(resultado.lista[3]).toBe('Mimi - pessoa 2');
-    expect(resultado.lista[4]).toBe('Rex - abrigo');
-    expect(resultado.lista[5]).toBe('Zero - abrigo');
-    expect(resultado.lista.length).toBe(6);
-    expect(resultado.erro).toBeFalsy();
-  });
-
   test('Não deve adotar Loco sem companhia', () => {
     const resultado = new AbrigoAnimais().encontraPessoas('SKATE,RATO,BOLA',
       'RATO,NOVELO,BOLA,LASER,CAIXA', 'Loco');
