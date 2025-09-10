@@ -29,6 +29,19 @@ describe('Abrigo de Animais', () => {
     expect(resultado.erro).toBeFalsy();
   });
 
+  test('Deve negar adoção em caso de empate: Rex não pode ser adotado', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('LASER,RATO,BOLA,CAIXA',
+      'RATO,NOVELO,BOLA,CAIXA,LASER', 'Rex,Fofo,Mimi,Bebe,Zero,Bola');
+    expect(resultado.lista[0]).toBe('Bebe - pessoa 1');
+    expect(resultado.lista[1]).toBe('Bola - abrigo');
+    expect(resultado.lista[2]).toBe('Fofo - abrigo');
+    expect(resultado.lista[3]).toBe('Mimi - pessoa 2');
+    expect(resultado.lista[4]).toBe('Rex - abrigo');
+    expect(resultado.lista[5]).toBe('Zero - abrigo');
+    expect(resultado.lista.length).toBe(6);
+    expect(resultado.erro).toBeFalsy();
+  })
+
   test('Deve rejeitar pessoas com brinquedo duplicado', () => {
     const resultado = new AbrigoAnimais().encontraPessoas('RATO,BOLA,BOLA',
       'RATO,NOVELO', 'Rex,Fofo');
